@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="angular.min.js"></script>
+<script type='text/javascript'>
+var filterExample = angular.module('example',[]);
+filterExample.controller("Ctrl",
+function ($scope) {
+    $scope.names = ['Computer Associates','Char sow Shahar','Hitech City','Mind Space'];
+});
+
+filterExample.filter('reverse', function () {
+        return function (text) {
+          var str = text.split('').reverse().join('');
+          return str;
+        };
+});
+</script>
+</head>
+<body>
+  <div ng-app="example">
+    <div ng-controller="Ctrl">
+        <p ng-repeat="name in names">{{name}} = {{name | reverse}}</p>
+    </div>
+</div>
+
+</body>
+
+
+</html>
